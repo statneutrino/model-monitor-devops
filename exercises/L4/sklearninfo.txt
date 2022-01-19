@@ -1,0 +1,10 @@
+Name: scikit-learn
+Version: 1.0.2
+Summary: A set of python modules for machine learning and data mining
+Home-page: http://scikit-learn.org
+Author: 
+Author-email: 
+License: new BSD
+Location: /home/statneutrino/miniconda3/envs/model-drift/lib/python3.9/site-packages
+Requires: joblib, numpy, scipy, threadpoolctl
+Required-by: 
