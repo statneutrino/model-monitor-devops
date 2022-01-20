@@ -19,7 +19,7 @@ model_path = os.path.join(config['output_model_path'])
 #################Function for training the model
 def train_model():
     
-    #use this logistic regression for training
+    # Use ridge regression logistic regresssion classifier for ML model
     LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
                     intercept_scaling=1, l1_ratio=None, max_iter=100,
                     multi_class='warn', n_jobs=None, penalty='l2',
