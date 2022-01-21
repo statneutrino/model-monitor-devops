@@ -15,18 +15,21 @@ with open('config.json','r') as f:
 
 dataset_csv_path = os.path.join(config['output_folder_path'], 'finaldata.csv') 
 model_path = os.path.join(os.getcwd(), config['output_model_path'], 'trainedmodel.pkl')
-column_names = ast.literal_eval(config['column_names'], 'testdata.csv')
-
+target = config['target']
+features = ast.literal_eval(config['feature_names'])
 
 #################Function for training the model
-def train_model(dataset_csv_path, clf_path, random_state=42, target_name='exited'):
+def train_model(
+    dataset_csv_path, 
+    clf_path, random_state=42, 
+    target_name='exited', 
+    features=['lastmonth_activity', 'lastyear_activity', 'number_of_employees']):
     
     # Load data and reshape for fitting
     file_path = os.path.join(os.getcwd(), dataset_csv_path)
     ingested_data = pd.read_csv(file_path)
     
-    y = ingested_data.pop(target_name).values.reshape(-1, 1).ravel()
-    features = [col for col in column_names if col not in ['corporation', target_name]]
+    y = ingested_data[target_name].values.reshape(-1, 1).ravel()
     X = ingested_data.loc[:,features].values.reshape(-1, len(features))
     
     print(X)
@@ -51,8 +54,5 @@ if __name__ == '__main__':
     # Test predictions
     file_path = os.path.join(os.getcwd(), dataset_csv_path)
     ingested_data = pd.read_csv(file_path)
-    features = column_names.copy()
-    features.remove('exited')
-    features.remove('corporation')
     X = ingested_data.loc[:,features].values.reshape(-1, len(features))
     print(clf.predict(X))
