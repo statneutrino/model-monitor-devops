@@ -34,11 +34,11 @@ def merge_multiple_dataframe(input_folder_path, output_folder_path):
     merged_df = df_list.drop_duplicates()
     if not os.path.isdir(os.getcwd() + output_path):
         os.mkdir(os.getcwd() + output_path)
-    merged_df.to_csv(os.getcwd() + output_path + 'finaldata.csv')
+    merged_df.to_csv(os.getcwd() + output_path + 'finaldata.csv', index=False)
     
     with open(os.getcwd() + output_path + 'ingestedfiles.txt','w') as file:
         for item in file_dict.items():
-            filename, _ = item # filename, date = item
+            filename, _ = item # filename, date = item -- option to record dates
             file.write(str(filename) + '\n') # ': ' + date + '\n')
 
     return merged_df
