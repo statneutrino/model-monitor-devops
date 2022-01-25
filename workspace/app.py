@@ -17,6 +17,7 @@ app.secret_key = '1652d576-484a-49fd-913a-6879acfa6ba4'
 with open('config.json','r') as f:
     config = json.load(f) 
 
+
 dataset_csv_path = os.path.join(config['output_folder_path'], 'finaldata.csv') 
 
 deployed_model_dir = config['prod_deployment_path']
