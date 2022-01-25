@@ -75,7 +75,7 @@ def outdated_packages_list():
     outdated_df = pd.read_json(outdated_json).loc[:,['name', 'version', 'latest_version']]
 
     uptodate_df = all_packages[~all_packages['name'].isin(outdated_df['name'])]
-    uptodate_df['latest_version'] = uptodate_df['version']
+    uptodate_df['latest_version'] = uptodate_df.loc[:,'version']
     output_df = outdated_df.append(uptodate_df)
 
     return output_df.reset_index()

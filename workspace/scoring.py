@@ -18,7 +18,7 @@ target_name = config['target']
 features = ast.literal_eval(config['feature_names'])
 
 # Function for model scoring
-def score_model(model_dir, test_data_path):
+def score_model(model_dir, test_data_path, features):
     """#this function should take a trained model, load test data, and calculate an F1 score for the model relative to the test data
     #it should write the result to the latestscore.txt file
     """
