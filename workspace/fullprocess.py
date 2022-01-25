@@ -15,6 +15,8 @@ deployment_dir = config['prod_deployment_path']
 source_data_dir = config['input_folder_path']
 features = ast.literal_eval(config['feature_names'])
 output_folder_path = config['output_folder_path']
+ingested_data_path = os.path.join(os.getcwd(), output_folder_path, 'finaldata.csv')
+model_dir = os.path.join(os.getcwd(), config['output_model_path'])
 
 ##################Check and read new data
 def check_new_data(deployment_dir, source_data_dir):
@@ -39,7 +41,9 @@ with open(latest_score_path, 'r') as f:
     current_score = float(f.read())
 
 # Evaluate F1 score based on new data
-new_score = scoring.score_model(deployment_dir, test_data_path, features)
+new_score = scoring.score_model(model_dir, ingested_data_path, features)
+print(current_score)
+print(new_score)
 
 ##################Deciding whether to proceed, part 2
 #if you found model drift, you should proceed. otherwise, do end the process here
@@ -62,7 +66,8 @@ def run_full_pipeline(deployment_dir, source_data_dir):
 
 
 if __name__ == '__main__':
-    print(run_full_pipeline(deployment_dir, source_data_dir))
+    pass
+    # print(run_full_pipeline(deployment_dir, source_data_dir))
 
 
 

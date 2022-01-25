@@ -18,14 +18,14 @@ target_name = config['target']
 features = ast.literal_eval(config['feature_names'])
 
 # Function for model scoring
-def score_model(model_dir, test_data_path, features):
+def score_model(model_dir, test_data_path, features, target_name = 'exited'):
     """#this function should take a trained model, load test data, and calculate an F1 score for the model relative to the test data
     #it should write the result to the latestscore.txt file
     """
     # Load data and reshape for fitting
     file_path = os.path.join(os.getcwd(), test_data_path)
     test_data = pd.read_csv(file_path)
-    
+
     y = test_data[target_name].values.reshape(-1, 1).ravel()
     X = test_data.loc[:,features].values.reshape(-1, len(features))
     
