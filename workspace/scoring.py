@@ -42,4 +42,4 @@ def score_model(model_dir, test_data_path, features, target_name = 'exited'):
 
 if __name__ == '__main__':
     model_dir = os.path.join(os.getcwd(), config['output_model_path'])
-    print(score_model(model_dir, test_data_path))
+    print(score_model(model_dir, test_data_path, features))

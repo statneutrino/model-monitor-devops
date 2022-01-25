@@ -8,7 +8,7 @@ with open('config.json','r') as f:
 output_model_dir = config['output_model_path']
 
 #Specify a URL that resolves to your workspace
-URL = "http://172.18.206.122:8000/"
+URL = "http://172.29.250.188:8000/"
 
 # access_token = request.data.decode('UTF-8')
 
