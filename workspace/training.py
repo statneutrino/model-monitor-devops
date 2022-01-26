@@ -32,7 +32,6 @@ def train_model(
     y = ingested_data[target_name].values.reshape(-1, 1).ravel()
     X = ingested_data.loc[:,features].values.reshape(-1, len(features))
     
-    print(X)
     # Use ridge regression logistic regression classifier for ML model
     LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
                     intercept_scaling=1, l1_ratio=None, max_iter=100,

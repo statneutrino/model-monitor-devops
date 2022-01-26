@@ -39,7 +39,7 @@ def predict():
 @app.route("/scoring", methods=['GET','OPTIONS'])
 def scoring():        
     #check the score of the deployed model
-    f1_score = score_model(deployed_model_dir, test_data_path, features)
+    f1_score = score_model(deployed_model_dir, test_data_path, features, save = False)
     return str(f1_score)
 
 # Summary Statistics Endpoint

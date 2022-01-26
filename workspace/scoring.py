@@ -18,7 +18,7 @@ target_name = config['target']
 features = ast.literal_eval(config['feature_names'])
 
 # Function for model scoring
-def score_model(model_dir, test_data_path, features, target_name = 'exited'):
+def score_model(model_dir, test_data_path, features, target_name = 'exited', save = True):
     """#this function should take a trained model, load test data, and calculate an F1 score for the model relative to the test data
     #it should write the result to the latestscore.txt file
     """
@@ -35,11 +35,12 @@ def score_model(model_dir, test_data_path, features, target_name = 'exited'):
     y_pred = clf.predict(X)
     f1score = metrics.f1_score(y_pred, y)
 
-    with open(os.path.join(model_dir, 'latestscore.txt'), 'w') as file:
-        file.write(str(f1score))
+    if save is True:
+        with open(os.path.join(model_dir, 'latestscore.txt'), 'w') as file:
+            file.write(str(f1score))
 
     return f1score
 
 if __name__ == '__main__':
     model_dir = os.path.join(os.getcwd(), config['output_model_path'])
-    print(score_model(model_dir, test_data_path))
+    print(score_model(model_dir, test_data_path, features))

@@ -1,10 +1,11 @@
 { 
-    "input_folder_path": "practicedata", 
+    "input_folder_path": "sourcedata", 
     "output_folder_path": "ingesteddata", 
     "test_data_path": "testdata", 
-    "output_model_path": "practicemodels", 
+    "output_model_path": "models", 
     "prod_deployment_path": "production_deployment",
     "column_names": "['corporation', 'lastmonth_activity', 'lastyear_activity', 'number_of_employees', 'exited']",
     "target": "exited",
-    "feature_names": "['lastmonth_activity', 'lastyear_activity', 'number_of_employees']"
+    "feature_names": "['lastmonth_activity', 'lastyear_activity', 'number_of_employees']",
+    "url": "http://192.168.182.180:8000/"
 }
